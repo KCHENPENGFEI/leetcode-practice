@@ -1,6 +1,7 @@
 package linkedList;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -39,6 +40,19 @@ public class HasCycle141 {
                 return false;
             }
         }
+        return true;
+    }
+
+    // 优雅的快慢指针
+    public boolean hasCycle2(ListNode head) {
+        ListNode fast = head, slow = head;
+        do {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            fast = fast.next.next;
+            slow = slow.next;
+        } while (fast != slow);
         return true;
     }
     // 哈希表，保存已经遍历过的Node

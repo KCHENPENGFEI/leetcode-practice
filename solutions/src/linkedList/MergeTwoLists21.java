@@ -17,8 +17,8 @@ public class MergeTwoLists21 {
         System.out.println(mergeTwoLists21.mergeTwoLists1(l1, l2).val);
     }
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode head = new ListNode(0);
-        ListNode pointer = head;
+        ListNode dummy = new ListNode(0);
+        ListNode pointer = dummy;
         while (l1 != null || l2 != null) {
             if (l1 == null) {
                 pointer.next = new ListNode(l2.val);
@@ -41,7 +41,7 @@ public class MergeTwoLists21 {
             }
             pointer = pointer.next;
         }
-        return head.next;
+        return dummy.next;
     }
 
     public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {

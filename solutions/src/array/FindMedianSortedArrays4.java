@@ -32,15 +32,40 @@ public class FindMedianSortedArrays4 {
         int i = 0, j = 0;
         int cur = 0;
         int pre = 0;
+//        while (index <= allLen / 2) {
+//            // 如果allLen是偶数，那么中位数就是(pre + cur) / 2；是奇数那么就是cur
+//            pre = allLen % 2 == 0? cur: 0;
+//            // 如果j > len2说明数组2已经遍历结束，直接遍历数组1就好了
+//            if ((i < len1 && j < len2 && nums1[i] < nums2[j]) || j >= len2) {
+//                cur = nums1[i];
+//                i++;
+//            }
+//            else if ((i < len1 && j < len2 && nums1[i] >= nums2[j]) || i >= len1) {
+//                cur = nums2[j];
+//                j++;
+//            }
+//            index++;
+//        }
+        // 换种清晰的写法
         while (index <= allLen / 2) {
             pre = allLen % 2 == 0? cur: 0;
-            if ((i < len1 && j < len2 && nums1[i] < nums2[j]) || j >= len2) {
-                cur = nums1[i];
-                i++;
+            if (i < len1 && j < len2) {
+                if (nums1[i] < nums2[j]) {
+                    cur = nums1[i];
+                    i++;
+                }
+                else {
+                    cur = nums2[j];
+                    j++;
+                }
             }
-            else if ((i < len1 && j < len2 && nums1[i] >= nums2[j]) || i >= len1) {
+            else if (i >= len1) {
                 cur = nums2[j];
                 j++;
+            }
+            else {
+                cur = nums1[i];
+                i++;
             }
             index++;
         }

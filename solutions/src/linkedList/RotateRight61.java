@@ -4,8 +4,8 @@ package linkedList;
  * 链表的旋转
  * 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
  *
- * 使用的方法比较简单，但是使用了额外空间
- * 方法二: 不使用额外空间，思路为将原始链表尾部连接至头部，然后找到断开连接的地方即可
+ * 方法二: 使用的方法比较简单，但是使用了额外空间(并不是在原链表上做的旋转)
+ * 方法一: 不使用额外空间，思路为将原始链表尾部连接至头部，然后找到断开连接的地方即可
  * */
 public class RotateRight61 {
 
@@ -35,7 +35,8 @@ public class RotateRight61 {
         return result;
 
     }
-    public ListNode rotateRight(ListNode head, int k) {
+
+    public ListNode rotateRight2(ListNode head, int k) {
         ListNode result = new ListNode(0);
         ListNode pointer = head;
         ListNode pointer1 = result;

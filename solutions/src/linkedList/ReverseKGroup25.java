@@ -53,7 +53,7 @@ public class ReverseKGroup25 {
             }
             // 开始分批翻转
             ListNode perLoopStart = reverse(curPointer, k);
-            // 进行首位相接
+            // 进行首尾相接
             if (lastEndPointer != null) {
                 lastEndPointer.next = perLoopStart;
             }
