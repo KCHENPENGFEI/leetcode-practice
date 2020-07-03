@@ -16,7 +16,7 @@ public class BuildTree105 {
         }
         // 找到根节点
         TreeNode root = new TreeNode(preorder[0]);
-        for (int i = 0; i < preorder.length; i++) {
+        for (int i = 0; i < inorder.length; i++) {
             if (preorder[0] == inorder[i]) {
                 // 形成左子树和右子树的preorder和inorder
                 int[] preorderLeft = Arrays.copyOfRange(preorder, 1, i + 1);

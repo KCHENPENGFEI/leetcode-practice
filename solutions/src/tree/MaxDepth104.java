@@ -2,6 +2,7 @@ package tree;
 
 /**
  * 求二叉树的最大深度
+ * 递归地找到左子树和右子树的高度，然后返回Max+1
  * */
 public class MaxDepth104 {
     public int maxDepth(TreeNode root) {

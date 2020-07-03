@@ -13,12 +13,15 @@ public class MinPathSum64 {
         int[][] dp = new int[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
+                // 左上角只能等于本身
                 if (i == 0 && j == 0) {
                     dp[i][j] = grid[i][j];
                 }
+                // 第一行依次累加
                 else if (i == 0) {
                     dp[i][j] = dp[i][j - 1] + grid[i][j];
                 }
+                // 第一列依次累加
                 else if (j == 0) {
                     dp[i][j] = dp[i - 1][j] + grid[i][j];
                 }

@@ -41,7 +41,7 @@ public class MaxProduct152 {
         int max = nums[0];
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < 0) {
-                // 由于nums[i]会使得越大的数字乘积之后变得越小，所以计算时候需要将imax和imin换位
+                // 由于负的nums[i]会使得越大的数字乘积之后变得越小，所以计算时候需要将imax和imin换位
                 imax[i] = Math.max(imin[i - 1] * nums[i], nums[i]);
                 imin[i] = Math.min(imax[i - 1] * nums[i], nums[i]);
             }

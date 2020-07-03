@@ -26,13 +26,14 @@ public class LevelOrderBottom107 {
             List<Integer> node = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode cur = stack.pop();
-                if (cur == null) {
-                    continue;
-                }
                 node.add(cur.val);
                 // 添加后续节点
-                stack.addLast(cur.left);
-                stack.addLast(cur.right);
+                if (cur.left != null) {
+                    stack.addLast(cur.left);
+                }
+                if (cur.right != null) {
+                    stack.addLast(cur.right);
+                }
             }
             if (node.size() > 0) {
                 result.addFirst(new ArrayList<>(node));

@@ -14,32 +14,30 @@ public class RightSideView199 {
         if (root == null) {
             return result;
         }
-        List<List<Integer>> allNodes = travel(root);
-        for (List<Integer> node: allNodes) {
-            if (node.size() == 0) {
-                continue;
-            }
-            result.add(node.get(node.size() - 1));
+        List<LinkedList<Integer>> allNodes = travel(root);
+        for (LinkedList<Integer> node: allNodes) {
+            result.add(node.pop());
         }
         return result;
     }
 
-    private List<List<Integer>> travel(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
+    private List<LinkedList<Integer>> travel(TreeNode root) {
+        List<LinkedList<Integer>> result = new ArrayList<>();
         LinkedList<TreeNode> stack = new LinkedList<>();
         // 压入root
         stack.addLast(root);
         while (!stack.isEmpty()) {
             int size = stack.size();
-            List<Integer> nodes = new ArrayList<>();
+            LinkedList<Integer> nodes = new LinkedList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode cur = stack.pop();
-                if (cur == null) {
-                    continue;
+                nodes.push(cur.val);
+                if (cur.left != null) {
+                    stack.addLast(cur.left);
                 }
-                nodes.add(cur.val);
-                stack.addLast(cur.left);
-                stack.addLast(cur.right);
+                if (cur.right != null) {
+                    stack.addLast(cur.right);
+                }
             }
             if (nodes.size() != 0) {
                 result.add(nodes);

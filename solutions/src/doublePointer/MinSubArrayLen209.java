@@ -1,5 +1,11 @@
 package doublePointer;
 
+/**
+ * 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的子数组，
+ * 并返回其长度。如果不存在符合条件的子数组，返回 0。
+ *
+ * 双指针法: 当左指针和右指针之前的和小于s时，右指针不断右移增大sum，和超过sum时候左指针不断右移减小sum
+ * */
 public class MinSubArrayLen209 {
     public static void main(String[] args) {
         int s = 7;

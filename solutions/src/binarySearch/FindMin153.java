@@ -22,9 +22,8 @@ public class FindMin153 {
         if (nums.length == 0) {
             return 0;
         }
-        int lv = nums[0];
         int rv = nums[nums.length - 1];
-        int point = findPoint(nums, lv, rv);
+        int point = findPoint(nums, rv);
         return nums[point];
     }
     /**
@@ -32,9 +31,9 @@ public class FindMin153 {
      * 那么r就会不断左移，然后返回index为0，不用额外判断数组越界。如果使用lv，那么l就会不断右移，
      * 最终会返回num.length，如果不额外判断就会造成数组越界
      * */
-    public int findPoint(int[] nums, int lv, int rv) {
+    public int findPoint(int[] nums, int rv) {
         int l = 0;
-        int r = nums.length;
+        int r = nums.length - 1;
         while (l < r) {
             int mid = l + (r - l) / 2;
             if (nums[mid] > rv) {
