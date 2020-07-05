@@ -5,7 +5,7 @@ package dp;
  * 做法: allSum[i]为以i为结尾的所有数的和
  * */
 public class NumArray303 {
-    private int[] allSum;
+    private final int[] allSum;
 
     public NumArray303(int[] nums) {
         this.allSum = new int[nums.length];

@@ -36,6 +36,7 @@ public class LevelOrder429 {
                 result.add(layer);
             }
         }
+        StringBuilder sn = new StringBuilder();
         return result;
     }
 }

@@ -68,7 +68,8 @@ public class LongestPalindrome5 {
                 if (charArray[i] != charArray[j]) {
                     dp[i][j] = false;
                 } else {
-                    if (j - i < 3) {
+                    // 如果j - i = 1说明两个相邻，那么i + 1和j - 1越界了，所以直接特殊判断
+                    if (j - i == 1) {
                         dp[i][j] = true;
                     } else {
                         dp[i][j] = dp[i + 1][j - 1];

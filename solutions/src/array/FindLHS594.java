@@ -12,13 +12,9 @@ public class FindLHS594 {
             return 0;
         }
         Arrays.sort(nums);
-        int i = 0, j = 0;
+        int i = 0, j = 1;
         int maxLen = 0;
         while (j < nums.length) {
-            if (i == j) {
-                j++;
-                continue;
-            }
             if (nums[j] - nums[i] == 1) {
                 j++;
                 maxLen = Math.max(maxLen, j - i);

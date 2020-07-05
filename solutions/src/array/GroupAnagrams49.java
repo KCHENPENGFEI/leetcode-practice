@@ -1,6 +1,7 @@
 package array;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author chenpengfei
@@ -94,19 +95,19 @@ public class GroupAnagrams49 {
 
     // 利用一个Map，将异位的单词进行排序作为key，然后将他们放入Map中，速度较快
     public List<List<String>> groupAnagrams3(String[] strs) {
+        List<List<String>> ans = new ArrayList<>();
         if (strs.length == 0) {
-            return new ArrayList();
+            return ans;
         }
-        Map<String, List> ans = new HashMap<>();
+        Map<String, List<String>> map = new HashMap<>();
         for (String s : strs) {
             char[] ca = s.toCharArray();
             Arrays.sort(ca);
             String key = String.valueOf(ca);
-            if (!ans.containsKey(key)) {
-                ans.put(key, new ArrayList());
-            }
-            ans.get(key).add(s);
+            List<String> a = map.getOrDefault(key, new ArrayList<>());
+            a.add(s);
+            map.put(key, a);
         }
-        return new ArrayList(ans.values());
+        return new ArrayList<>(map.values());
     }
 }
