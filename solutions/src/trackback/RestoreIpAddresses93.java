@@ -46,7 +46,7 @@ public class RestoreIpAddresses93 {
                 // 剪枝
                 break;
             }
-            if (Integer.valueOf(sub) > 255) {
+            if (Integer.parseInt(sub) > 255) {
                 // 数字已经大于255直接剪枝
                 // 剪枝
                 break;

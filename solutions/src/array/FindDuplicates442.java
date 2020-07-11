@@ -22,15 +22,13 @@ public class FindDuplicates442 {
         }
         List<Integer> ans = new ArrayList<>();
         for (int i = 0; i < len; i++) {
-            int num = nums[i];
-            if (num < 0) {
-                num = -num;
+            int num = Math.abs(nums[i]);
+            if (nums[num - 1] < 0) {
+                ans.add(num);
             }
-            int id = num - 1;
-            if (nums[id] < 0) {
-                ans.add(id + 1);
+            else {
+                nums[num - 1] = -nums[num - 1];
             }
-            nums[id] = -nums[id];
         }
         return ans;
     }

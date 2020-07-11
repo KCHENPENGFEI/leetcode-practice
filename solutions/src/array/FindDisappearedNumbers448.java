@@ -20,8 +20,8 @@ public class FindDisappearedNumbers448 {
         int len = nums.length;
         List<Integer> res = new ArrayList<>();
         for (int i = 0; i < len; i++) {
-            int newId = Math.abs(nums[i]) - 1;
-            nums[newId] = - Math.abs(nums[newId]);
+            int num = Math.abs(nums[i]);
+            nums[num - 1] = nums[num - 1] > 0? -nums[num - 1]: nums[num - 1];
         }
         for (int j = 0; j < len; j++) {
             if (nums[j] > 0) {

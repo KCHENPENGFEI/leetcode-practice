@@ -4,10 +4,33 @@ import java.util.Arrays;
 
 public class FirstMissingPositive41 {
     public static void main(String[] args) {
-        int[] nums = new int[]{10,1,9,-3,-4,24,6};
+        int[] nums = new int[]{3,4,-1,1};
         FirstMissingPositive41 firstMissingPositive41 = new FirstMissingPositive41();
-        System.out.println(firstMissingPositive41.firstMissingPositive(nums));
+        System.out.println(firstMissingPositive41.firstMissingPositive1(nums));
     }
+    public int firstMissingPositive1(int[] nums) {
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            // 最后一个判断条件解释为nums[i] - 1位置上的数字不是应该出现的数字
+            while (nums[i] > 0 && nums[i] < len + 1 && nums[nums[i] - 1] != nums[i]) {
+                swap(nums, nums[i] - 1, i);
+            }
+        }
+        for (int i = 0; i < len; i++) {
+            if (nums[i] != i + 1) {
+                return i + 1;
+            }
+        }
+        // 都正确则返回数组长度 + 1
+        return len + 1;
+    }
+
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
+    }
+
     public int firstMissingPositive(int[] nums) {
         if (nums.length == 0) {
             return 1;

@@ -23,4 +23,34 @@ public class FindMaxConsecutiveOnes485 {
         }
         return maxLen;
     }
+
+    public int findMaxConsecutiveOnes1(int[] nums) {
+        int len = nums.length;
+        if (len == 0) {
+            return 0;
+        }
+        if (len == 1) {
+            return nums[0];
+        }
+        int tmp = nums[0];
+        int cnt = tmp == 1? 1: 0;
+        int max = 0;
+        for (int i = 1; i < len; i++) {
+            if ((tmp = nums[i] & tmp) == 1) {
+                cnt++;
+            }
+            else {
+                if (nums[i] == 0) {
+                    max = Math.max(max, cnt);
+                    cnt = 0;
+                }
+                else {
+                    max = Math.max(max, 1);
+                    cnt = 1;
+                }
+            }
+        }
+        max = Math.max(max, cnt);
+        return max;
+    }
 }
