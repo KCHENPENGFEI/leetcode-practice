@@ -24,10 +24,7 @@ public class SumNumbers129 {
             // 因为没有把sum增加所以不需要删除
             return;
         }
-        sum = sum * 10 + root.val;
-        trackback(sum, root.left);
-        trackback(sum, root.right);
-        sum -= root.val;
-        sum /= 10;
+        trackback(sum * 10 + root.val, root.left);
+        trackback(sum * 10 + root.val, root.right);
     }
 }

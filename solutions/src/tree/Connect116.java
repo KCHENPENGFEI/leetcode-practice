@@ -1,7 +1,8 @@
 package tree;
 
 /**
- * 给定一个完美二叉树，填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
+ * 给定一个完美二叉树，填充它的每个 next 指针，让这个指针指向其下一个右侧节点。
+ * 如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
  * */
 public class Connect116 {
     public Node connect(Node root) {

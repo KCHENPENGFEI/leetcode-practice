@@ -2,6 +2,10 @@ package tree;
 
 import java.util.LinkedList;
 
+/**
+ * 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
+ *
+ **/
 public class LowestCommonAncestor235 {
     boolean found = false;
     LinkedList<TreeNode> result = new LinkedList<>();
@@ -29,13 +33,11 @@ public class LowestCommonAncestor235 {
         if(root == null || root == p || root == q) {
             return root;
         }
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
-        if(left == null) {
-            return right;
+        if (root.val < p.val && root.val < q.val) {
+            return lowestCommonAncestor1(root.right, p, q);
         }
-        if(right == null) {
-            return left;
+        if (root.val > p.val && root.val > q.val) {
+            return lowestCommonAncestor1(root.left, p, q);
         }
         return root;
     }
@@ -63,12 +65,10 @@ public class LowestCommonAncestor235 {
         if (node.val < root.val) {
             // 搜索左子树
             trackback(track, root.left, node);
-            // System.out.println("left");
         }
         else if (node.val > root.val) {
             // 搜索右子树
             trackback(track, root.right, node);
-            // System.out.println("right");
         }
         else {
             trackback(track, root.left, node);

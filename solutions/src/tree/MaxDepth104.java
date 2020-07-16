@@ -9,8 +9,12 @@ public class MaxDepth104 {
         if (root == null) {
             return 0;
         }
-        int dLeft = maxDepth(root.left);
-        int dRight = maxDepth(root.right);
-        return Math.max(dLeft, dRight) + 1;
+        if (root.left == null) {
+            return maxDepth(root.right) + 1;
+        }
+        if (root.right == null) {
+            return maxDepth(root.left) + 1;
+        }
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 }

@@ -15,6 +15,8 @@ public class MinDepth111 {
         if (root.right == null) {
             return minDepth(root.left) + 1;
         }
+//        int dl, dr;
+//        return Math.min((dl = minDepth(root.left)) == 0? Integer.MAX_VALUE: dl, (dr = minDepth(root.right)) == 0? Integer.MAX_VALUE: dr) + 1;
         return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
     }
 }

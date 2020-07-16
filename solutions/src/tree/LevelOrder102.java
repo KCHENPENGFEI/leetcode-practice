@@ -6,10 +6,35 @@ import java.util.List;
 
 /**
  * 树的层序遍历
- * 做法: 使用队列进行辅助，每遍历一层就加入队列，需要注意的是要同时统计树的深度
+ * 做法: 注意一下进队列出队列的顺序
  * */
 public class LevelOrder102 {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> levelOrder1(TreeNode root) {
+        if (root == null) {
+            return new ArrayList<>();
+        }
+        List<List<Integer>> res = new ArrayList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        // root入队列
+        queue.push(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> layer = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = queue.removeLast();
+                layer.add(cur.val);
+                if (cur.left != null) {
+                    queue.push(cur.left);
+                }
+                if (cur.right != null) {
+                    queue.push(cur.right);
+                }
+            }
+            res.add(layer);
+        }
+        return res;
+    }
+    public List<List<Integer>> levelOrder2(TreeNode root) {
         List<List<Integer>> tmp = new ArrayList<>();
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) {
