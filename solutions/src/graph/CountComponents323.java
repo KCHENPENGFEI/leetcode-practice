@@ -55,4 +55,36 @@ public class CountComponents323 {
         }
         return ans;
     }
+
+    // DFS
+    public int countComponents2(int n, int[][] edges) {
+        int count = 0;
+        List<List<Integer>> adjList = new ArrayList<>();
+        boolean[] visited = new boolean[n];
+
+        for (int i = 0; i < n; i++) {
+            adjList.add(new ArrayList<>());
+        }
+        for (int[] edge : edges) {
+            adjList.get(edge[0]).add(edge[1]);
+            adjList.get(edge[1]).add(edge[0]);
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                count++;
+                dfs(visited, i, adjList);
+            }
+        }
+        return count;
+    }
+
+    private void dfs(boolean[] visited, int index, List<List<Integer>> adjList) {
+        visited[index] = true;
+        for (int i : adjList.get(index)) {
+            if (!visited[i]) {
+                dfs(visited, i, adjList);
+            }
+        }
+    }
 }

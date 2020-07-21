@@ -15,6 +15,8 @@ import java.util.List;
  *
  * 做法: 首先计算链表的长度，统计出需要进行几次翻转，使用while循环对每一个loop操作
  * 对于翻转k长度的链表，使用reverse函数递归进行翻转，翻转完成之后将翻转完成的链表和后面的部分连接起来再重新进入while循环
+ *
+ * 主要看做法2
  */
 public class ReverseKGroup25 {
     int cnt = 1;
@@ -25,7 +27,7 @@ public class ReverseKGroup25 {
         ReverseKGroup25 reverseKGroup25 = new ReverseKGroup25();
         reverseKGroup25.reverseKGroup(head, k);
     }
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public ListNode reverseKGroup1(ListNode head, int k) {
         // 统计链表的长度
         int len = 0;
         ListNode pointer = head;
@@ -81,5 +83,40 @@ public class ReverseKGroup25 {
         head.next.next = head;
         head.next = null;
         return cur;
+    }
+
+    public ListNode reverseKGroup(ListNode head, int k) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode tail = head;
+        for (int i = 0; i < k; i++) {
+            // tail等于空说明长度不足，不用翻转
+            if (tail == null) {
+                return head;
+            }
+            tail = tail.next;
+        }
+        // 获得新的头结点
+        ListNode newHead = reverse(head, tail);
+        // 将前一部分和后一部分进行连接
+        head.next = reverseKGroup(tail, k);
+        return newHead;
+    }
+
+    /**
+    * 左闭右开区间
+     * 翻转head tail前一个节点之间的链表
+    **/
+    private ListNode reverse(ListNode head, ListNode tail) {
+        ListNode pre = null;
+        ListNode next = null;
+        while (head != tail) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return pre;
     }
 }
