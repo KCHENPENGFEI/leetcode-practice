@@ -43,7 +43,7 @@ public class Rob198 {
         }
         int[] dp = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
-            // 定义dp[i]为偷到第i间房子时候，此时的最大数值（可能没有偷第间）
+            // 定义dp[i]为偷到第i间房子时候，此时的最大数值（可能没有偷第i间）
             // dp[i] = max(nums[i] + dp[i - 2], dp[i - 1])
             if (i == 0) {
                 dp[i] = nums[i];

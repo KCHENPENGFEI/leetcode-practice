@@ -6,6 +6,8 @@ package binarySearch;
  * 给定两个整数，被除数 dividend 和除数 divisor。将两数相除，要求不使用乘法、除法和 mod 运算符。
  *
  * 返回被除数 dividend 除以除数 divisor 得到的商。
+ * 思路为：首先被除数减1个除数，如果可以减那么接下来减2个、4个、8个...如果减不下来，
+ * 那么更新被除数后重新从1个除数开始减，最后统计总共减了几次就是结果
  *
  */
 public class Divide29 {
