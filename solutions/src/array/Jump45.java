@@ -9,6 +9,9 @@ package array;
  *
  * 你的目标是使用最少的跳跃次数到达数组的最后一个位置。
  *
+ * 方法二比较好理解
+ * 方法一使用end标记能跳到最远的地方，如果现在遍历到了这个位置那么step++
+ *
  */
 public class Jump45 {
     public int jump(int[] nums) {
@@ -25,5 +28,23 @@ public class Jump45 {
             }
         }
         return steps;
+    }
+
+    public int jump2(int[] nums) {
+        // 从后往前依次找到能跳到指定位置的最左边的点
+        // 最终目的地
+        int pos = nums.length - 1;
+        int step = 0;
+        // 一直往前找
+        while (pos != 0) {
+            for (int i = 0; i < pos; i++) {
+                if (nums[i] + i >= pos) {
+                    // 最左能跳到【因为是左往右遍历】
+                    pos = i;
+                    step++;
+                }
+            }
+        }
+        return step;
     }
 }

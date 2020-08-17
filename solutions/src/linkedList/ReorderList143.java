@@ -1,8 +1,6 @@
 package linkedList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * 重排链表
@@ -78,5 +76,62 @@ public class ReorderList143 {
         ListNode outTail = tail.next;  //上一层 head 对应的 tail
         tail.next = subHead;
         return outTail;
+    }
+
+
+    // 1.找中点
+    // 2.翻转中点之后的链表(好多方法, Python和 Java 各用一种)
+    // 3.依次拼接
+    public void reorderList3(ListNode head) {
+        if (head == null || head.next == null) return;
+        Deque<ListNode> stack = new LinkedList<>();
+        ListNode p = head;
+        while (p != null) {
+            stack.push(p);
+            p = p.next;
+        }
+        int n = stack.size();
+        int count = (n - 1) / 2;
+        p = head;
+        while (count != 0) {
+            ListNode tmp = stack.pop();
+            tmp.next = p.next;
+            p.next = tmp;
+            p = tmp.next;
+            --count;
+        }
+        stack.pop().next = null;
+    }
+
+    public void reorderList4(ListNode head) {
+        if (head == null || head.next == null) return;
+        ListNode slow = head;
+        ListNode fast = head;
+        // 找中点 1 2 3 4 5 6
+        while (fast.next != null && fast.next.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // 翻转中点, 才用插入法 1 2 3 6 5 4
+        ListNode pre = slow;
+        ListNode cur = slow.next;
+        while (cur.next != null){
+            ListNode tmp = cur.next;
+            cur.next = tmp.next;
+            tmp.next = pre.next;
+            pre.next = tmp;
+        }
+
+        // 拼接 1 6 2 5 3 4
+        ListNode p1 = head;
+        ListNode p2 = slow.next;
+        while (p1 != slow){
+            // 建议大家这部分画图, 很容易理解的
+            slow.next = p2.next;
+            p2.next = p1.next;
+            p1.next = p2;
+            p1 = p2.next;
+            p2 = slow.next;
+        }
     }
 }
