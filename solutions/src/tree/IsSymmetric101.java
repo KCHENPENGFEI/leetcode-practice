@@ -1,9 +1,5 @@
 package tree;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-
 /**
  * 判断镜像二叉树
  * 方法一: 利用镜像二叉树性质，递归判断左子树是否等于右子树，这里一定是递归判断，

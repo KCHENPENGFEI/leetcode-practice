@@ -13,7 +13,7 @@ import java.util.List;
  * 你可以假设字典中没有重复的单词。
  * 做法: 定义dp[i]为字符串下标为i时，是否满意足题意，那么有
  * dp[j] = dp[i] && wordDict.contains(s.substring(i + 1, j + 1))就是说入如果dp[i]是true，那么i-j之间的单词
- * 如果在wordDict中那么dp[i]就位true
+ * 如果在wordDict中那么dp[j]就位true
  */
 public class WordBreak139 {
     public boolean wordBreak(String s, List<String> wordDict) {

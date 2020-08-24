@@ -4,6 +4,7 @@ package dp;
  * 打家劫舍
  *
  * 注意两种动态规划不同的dp定义和写法
+ * 主要写第二种
  * */
 public class Rob198 {
     public int rob(int[] nums) {

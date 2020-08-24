@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * 设计一个最大栈，支持 push、pop、top、peekMax 和 popMax 操作。
  * 构造两个栈，其中一个栈保存push进去的元素，另一个栈的大小需要和第一个栈保持一致【用于popMax操作】
  * 如: 插入数据为[5, 1, 1]，那么第一个栈的元素为(栈顶)[1, 1, 5](栈底)，第二个栈元素为[5, 5, 5]
- * 所以push为如果x小于最大栈栈顶元素，那么push栈顶元素进入最大栈
+ * 所以push为如果x大于最大栈栈顶元素，那么push栈顶元素进入最大栈
  * popMax操作为：确定最大值为max，然后依次弹出stack和maxStack的数值，如果相等那么循环终止，
  * 然后将刚才pop出来的数据再次push回去
  */
