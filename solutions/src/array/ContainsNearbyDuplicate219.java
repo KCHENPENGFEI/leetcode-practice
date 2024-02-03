@@ -8,7 +8,7 @@ import java.util.Map;
  * @date 2020/7/5 3:08 下午
  * 给定一个整数数组和一个整数 k，判断数组中是否存在两个不同的索引 i 和 j，使得 nums [i] = nums [j]，
  * 并且 i 和 j 的差的 绝对值 至多为 k。
- * 做法: 使用哈希表简历元素和下标的关系
+ * 做法: 使用哈希表建立元素和下标的关系
  */
 public class ContainsNearbyDuplicate219 {
     public boolean containsNearbyDuplicate(int[] nums, int k) {

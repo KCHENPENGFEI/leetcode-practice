@@ -3,6 +3,9 @@ package array;
 /**
  * @author chenpengfei
  * @date 2020/7/9 1:03 上午
+ * 给定一个整数序列：a1, a2, ..., an，一个132模式的子序列 ai, aj, ak 被定义为：当 i < j < k 时，ai < ak < aj。
+ * 设计一个算法，当给定有 n 个数字的序列时，验证这个序列中是否含有132模式的子序列。
+ * 做法一：暴力法求解
  */
 public class Find132pattern456 {
     public boolean find132pattern(int[] nums) {
@@ -29,14 +32,4 @@ public class Find132pattern456 {
         }
         return false;
     }
-//    public boolean find132pattern1(int[] nums) {
-//        if (nums.length < 3) {
-//            return false;
-//        }
-//        int[] right = new int[nums.length];
-//        int[] left = new int[nums.length];
-//        for (int i = nums.length - 1; i >= 0; i--) {
-//
-//        }
-//    }
 }
